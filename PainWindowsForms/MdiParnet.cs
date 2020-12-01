@@ -37,34 +37,11 @@ namespace PainWindowsForms
         }
         private void showHiddenFunctions()
         {
-            this.toolStrip1.Visible = true;
+            this.toolStrip2.Visible = true;
         }
 
-        private void showAddSongWindow(object sender, EventArgs e)
-        {
-            NewSongWindow win = new NewSongWindow(this.songsContainer);
-            win.ShowDialog();
-        }
-
-        private void showEditSongWindow(object sender, EventArgs e)
-        {
-            EditSongWindow win = new EditSongWindow(this.songsContainer);
-            win.ShowDialog();
-        }
-
-        private void showDeleteSongWindow(object sender, EventArgs e)
-        {
-            DeleteSongWindow win = new DeleteSongWindow(this.songsContainer);
-            win.ShowDialog();
-        }
-        public void refreshAllWindows()
-        {
-            foreach (var item in this.MdiChildren)
-            {
-                ((ListWindow)item).refresh();
-            }
-            
-        }
+        
+        
 
         private void addTestingData(object sender, EventArgs e)
         {

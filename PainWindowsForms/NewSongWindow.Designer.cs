@@ -115,7 +115,7 @@ namespace PainWindowsForms
             // 
             this.myControl1.Location = new System.Drawing.Point(259, 100);
             this.myControl1.Name = "myControl1";
-            this.myControl1.SelectedSongType = 0;
+            this.myControl1.SelectedSongType = 2;
             this.myControl1.Size = new System.Drawing.Size(203, 228);
             this.myControl1.TabIndex = 10;
             // 

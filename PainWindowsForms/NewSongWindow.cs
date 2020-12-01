@@ -15,10 +15,11 @@ namespace PainWindowsForms
         public SongsContainer songsContainer;
         public string[] types = { "Rock", "Pop", "Rap" };
         public int currentType =0;
+        public Song songToEdit = null;
         public NewSongWindow()
         {
             InitializeComponent();
-            //this.comboBox1.SelectedIndex= 0;
+            
         }
 
         public NewSongWindow(SongsContainer songsContainer)
@@ -26,10 +27,23 @@ namespace PainWindowsForms
             
             this.songsContainer = songsContainer;
             InitializeComponent();
-            //this.comboBox1.SelectedIndex = 0;
+            
+        }
+        public NewSongWindow(SongsContainer songsContainer, Song song)
+        {
+
+            this.songsContainer = songsContainer;
+            this.songToEdit = song;
+            InitializeComponent();
+
+            this.titleTextBox.Text = this.songToEdit.title;
+            this.authorTextBox.Text = this.songToEdit.author;
+            this.dateTimePicker1.Value = this.songToEdit.recordingDate;
+            this.myControl1.SelectedSongType = this.songToEdit.type;
+
         }
 
-        
+
 
         private void save(object sender, EventArgs e)
         {
@@ -38,37 +52,31 @@ namespace PainWindowsForms
                 errorProvider1.SetError(button1, "wypełnij wszystkie pola");
                 return;
             }
-            this.songsContainer.AddSong(new Song(this.songsContainer.lastId++,
+            if(songToEdit == null)
+            {
+                this.songsContainer.AddSong(new Song(this.songsContainer.lastId++,
                 this.myControl1.SelectedSongType,
                 this.titleTextBox.Text,
                 this.authorTextBox.Text,
                 this.dateTimePicker1.Value
                 ));
+            }
+            else
+            {
+                this.songsContainer.editSong(new Song(this.songToEdit.id,
+                this.myControl1.SelectedSongType,
+                this.titleTextBox.Text,
+                this.authorTextBox.Text,
+                this.dateTimePicker1.Value
+                ),this.songToEdit);
+            }
+            
 
             
             this.Close();
         }
 
-        /*private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.currentType = ++this.currentType % 3;
-            Console.WriteLine(currentType);
-            if (currentType == 0)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRock;
-                this.comboBox1.SelectedIndex = 0;
-            }
-            else if (currentType == 1)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImagePop;
-                this.comboBox1.SelectedIndex = 1;
-            }
-            else
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRap;
-                this.comboBox1.SelectedIndex = 2;
-            }
-        }*/
+       
 
         private void titleTextBoxValidated(object sender, EventArgs e)
         {
@@ -98,23 +106,6 @@ namespace PainWindowsForms
             }
         }
 
-       /* private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(this.comboBox1.SelectedIndex == 0)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRock;
-                currentType = 0;
-            }
-            else if(this.comboBox1.SelectedIndex == 1)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImagePop;
-                currentType = 1;
-            }
-            else
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRap;
-                currentType = 2;
-            }
-        }*/
+       
     }
 }

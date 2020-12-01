@@ -9,6 +9,9 @@ namespace PainWindowsForms
     public class SongsContainer
     {
         public List<Song> songsList;
+        public event Action<Song> AddSongEvent;
+        public event Action<Song , Song> EditSongEvent;
+        public event Action<Song> DeleteSongEvent;
 
         public MdiParnet mdiParent;
 
@@ -23,20 +26,22 @@ namespace PainWindowsForms
         {
             this.songsList.Add(newSong);
 
-            mdiParent.refreshAllWindows();
+            AddSongEvent?.Invoke(newSong);
 
         }
-        public void editSong(Song newSong, int index)
+        public void editSong(Song newSong, Song oldSong)
         {
-            //this.songsList[this.findSongListIndex(id)] = newSong;
-            this.songsList[index] = newSong;
-            mdiParent.refreshAllWindows();
+            
+            //var oldSong = this.songsList[];
+            this.songsList[findSongIndexInList(oldSong)] = newSong;
+            EditSongEvent?.Invoke(oldSong,newSong);
         }
-        public void deleteSong(int index)
+        public void deleteSong(Song oldSong)
         {
-            //this.songsList.RemoveAt(this.findSongListIndex(song.id));
-            this.songsList.RemoveAt(index);
-            mdiParent.refreshAllWindows();
+            
+            //var oldSong = this.songsList[index];
+            this.songsList.RemoveAt(findSongIndexInList(oldSong));
+            DeleteSongEvent?.Invoke(oldSong);
         }
         public Song findSongByListIndex(int id)
         {
@@ -136,9 +141,21 @@ namespace PainWindowsForms
             {
                 this.songsList.Add(new Song(id++, i%3,testTitle[i] , author[i], new DateTime(1980+i, 10, 1)));
             }
-            mdiParent.refreshAllWindows();
+            //mdiParent.refreshAllWindows();
 
 
+        }
+
+        private int findSongIndexInList(Song song)
+        {
+            for (int i = 0; i < this.songsList.Count; i++)
+            {
+                if (this.songsList[i].id == song.id)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

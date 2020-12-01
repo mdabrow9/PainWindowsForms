@@ -13,6 +13,8 @@ namespace PainWindowsForms
     public partial class MyControl : UserControl
     {
         private  int currentType;
+
+        //public enum SongType { Rock , Pop ,Rap}
         
         public MyControl()
         {
@@ -36,6 +38,20 @@ namespace PainWindowsForms
                 currentType = value % 3;
             }
         }
+       /* [Category("SongType")]
+        [BrowsableAttribute(true)]
+        public SongType SelectedSongTypee
+        {
+            get
+            {
+                return (SongType)this.comboBox1.SelectedIndex;
+            }
+            set
+            {
+
+            }
+
+        }*/
         private void setPicture(int type)
         {
             if (type == 0)

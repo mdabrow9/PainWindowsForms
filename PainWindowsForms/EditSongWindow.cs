@@ -50,24 +50,7 @@ namespace PainWindowsForms
             this.authorTextBox.Text = selected.author;
             this.dateTimePicker1.Value = selected.recordingDate;
             this.myControl1.SelectedSongType = selected.type;
-           /* this.comboBox1.SelectedIndex = selected.type;
-            this.currentType = selected.type;
-            
-            if (currentType == 0)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRock;
-               
-            }
-            else if (currentType == 1)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImagePop;
-                
-            }
-            else
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRap;
-                
-            }*/
+           
 
 
 
@@ -85,26 +68,7 @@ namespace PainWindowsForms
 
         }
 
-        /*private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            this.currentType = ++this.currentType % 3;
-            //Console.WriteLine(currentType);
-            if (currentType == 0)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRock;
-                this.comboBox1.SelectedIndex = 0;
-            }
-            else if (currentType == 1)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImagePop;
-                this.comboBox1.SelectedIndex = 1;
-            }
-            else
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRap;
-                this.comboBox1.SelectedIndex = 2;
-            }
-        }*/
+        
 
         private void titleTextBoxValidated(object sender, EventArgs e)
         {
@@ -134,24 +98,7 @@ namespace PainWindowsForms
             }
         }
 
-       /* private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.comboBox1.SelectedIndex == 0)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRock;
-                currentType = 0;
-            }
-            else if (this.comboBox1.SelectedIndex == 1)
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImagePop;
-                currentType = 1;
-            }
-            else
-            {
-                this.pictureBox1.Image = global::PainWindowsForms.Resource.ImageRap;
-                currentType = 2;
-            }
-        }*/
+       
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -30,22 +30,17 @@ namespace PainWindowsForms
             return "ID: " + this.id + " gatunek: " + this.types[this.type] + " Tytuł: " + this.title + " Autor: " + this.author;
         }
 
-        public ListViewItem newListViewItem()
+        public ListViewItem ToListViewItem()
         {
             string[] item = { this.id.ToString(), this.title, this.author, this.recordingDate.ToString(), this.types[this.type] };
-            return new ListViewItem(item);
+            
+            ListViewItem result = new ListViewItem(item);
+            result.Tag = this;
+            return result;
 
             //return new ListViewItem(new string[] {"lsllsl", this.id.ToString(), this.title, this.author, this.recordingDate.ToString(),this.types[this.type] });
         }
-        public TreeNode newTreeNode()
-        {
-            TreeNode[] subNode = { new TreeNode(this.title), 
-                new TreeNode(this.author), 
-                new TreeNode(this.recordingDate.ToString()), 
-                new TreeNode(this.types[this.type]) };
-
-            return new TreeNode(this.id.ToString(), subNode);
-        }
+        
 
 
     }
